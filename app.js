@@ -7,17 +7,22 @@ const options = {
     root: path.join(__dirname, 'public')
 }
 
-app.get('/', (req, res) => {
-    res.sendFile('/index.html', options)
+app.get('/:filename', (req, res) => {
+    const fileName = req.params.filename + '.html';
+    res.sendFile(fileName, options, (err) => {
+        if (err) {
+            res.sendFile('/404.html', options);
+        }
+    })
 })
 
-app.get('/about', (req, res) => {
-    res.sendFile('/about.html', options);
-})
+// app.get('/about', (req, res) => {
+//     res.sendFile('/about.html', options);
+// })
 
-app.get('/contact', (req, res) => {
-    res.sendFile('/contact.html', options);
-})
+// app.get('/contact', (req, res) => {
+//     res.sendFile('/contact.html', options);
+// })
 
 app.get('*', (req, res) => {
     res.sendFile('/404.html', options)

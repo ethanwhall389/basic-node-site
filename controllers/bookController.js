@@ -1,4 +1,4 @@
-const db = require('../db');
+const db = require('../models/db');
 const asyncHandler = require('express-async-handler');
 const CustomNotFoundError = require('../errors/CustomNotFound');
 

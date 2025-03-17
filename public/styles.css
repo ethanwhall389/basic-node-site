@@ -1,0 +1,15 @@
+body {
+    color: red;
+}
+
+.nav-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}
+
+.footer-links {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+}

@@ -15,6 +15,13 @@ app.use('/authors', authorRouter);
 app.use('/books', bookRouter);
 app.use('/', indexRouter);
 
+//error middleware function.
+//MUST be placed at the end of all middleware functions in application
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(err.statusCode || 500).send(err.message);
+})
+
 
 // const options = {
 //     root: path.join(__dirname, 'public')

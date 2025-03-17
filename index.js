@@ -9,8 +9,8 @@ http.createServer((req, res) => {
     }
     
     const fileName = reqUrl.pathname === '/'
-        ? './index.html'
-        : `.${reqUrl.pathname}.html`;
+        ? './public/index.html'
+        : `./public/${reqUrl.pathname}.html`;
 
     console.log(reqUrl.pathname);
     
@@ -22,7 +22,7 @@ http.createServer((req, res) => {
     
     fs.readFile(fileName, (err, data) => {
         if (err) {
-            fs.readFile('./404.html', (err404, data404) => {
+            fs.readFile('./public/404.html', (err404, data404) => {
                 res.writeHead(404, {'Content-Type': 'text/html'});
                 res.write(data404);
                 res.end();

@@ -1,15 +1,26 @@
 const express = require('express');
+const path = require('path');
 
 const app = express();
 
+const options = {
+    root: path.join(__dirname, 'public')
+}
+
 app.get('/', (req, res) => {
-    res.sendFile('C:\\Users\\ethan\\OneDrive\\DevEnv\\Projects\\basic-node-site\\index.html', (err) => {
-        if (err) {
-            next(err);
-        } else {
-            console.log ('sent file');
-        }
-    })
+    res.sendFile('/index.html', options)
+})
+
+app.get('/about', (req, res) => {
+    res.sendFile('/about.html', options);
+})
+
+app.get('/contact', (req, res) => {
+    res.sendFile('/contact.html', options);
+})
+
+app.get('*', (req, res) => {
+    res.sendFile('/404.html', options)
 })
 
 const PORT = 3000;
